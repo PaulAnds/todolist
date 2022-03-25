@@ -16,14 +16,14 @@ class Home extends Component {
                 <a href="https://www.youtube.com/watch?v=mCdA4bJAGGk">Find a girlfriend</a>
 
                 <div>
-                    {{/* Styles inline */}}
+                    {/* Styles inline */}
                     <button style= {{
                         backgroundColor: 'MediumSeaGreen',
                         border: '1px solid black',
                     }}>
                         click
                     </button>
-                    {{/* Styles objects */}}
+                    {/* Styles objects */}
                     <button style ={buttonStyle}>
                         click
                     </button>
