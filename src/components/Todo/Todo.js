@@ -75,6 +75,22 @@ class Todo extends Component {
         })
     }
 
+    removeTask = id => {
+        const {items} = this.state;
+        
+        const filteredItems = items.filter(
+            item => item.id !== id
+        );
+        
+        console.log(filteredItems);
+
+        this.setState({
+            items: filteredItems,
+
+
+        })
+
+    }
     render() {
 
         console.log(this.state.items);
@@ -94,6 +110,7 @@ class Todo extends Component {
                 <List 
                     items ={this.state.items}
                     markAsCompleted = {this.markAsCompleted}
+                    removeTask = {this.removeTask}
                 />
 
             </div>

@@ -2,7 +2,7 @@ import React from 'react';
 
 const List = props => {
     
-    const{items, markAsCompleted} = props;
+    const{items, markAsCompleted, removeTask} = props;
 
     return (
         <ul>
@@ -22,7 +22,9 @@ const List = props => {
                             <i className=" fa fa-check"></i>
                         </span>
                         
-                        <span className = 'trash'>
+                        <span className = "trash"
+                            onClick = {() => removeTask(item.id)}
+                        >
                             <i className=" fa fa-trash"></i>
                         </span>
                     </div>
