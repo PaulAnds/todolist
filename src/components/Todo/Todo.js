@@ -1,92 +1,106 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import {v4 as uuidv4} from 'uuid';
+import List from './List';
 
-export default class Todo extends Component {
+class Todo extends Component {
+    constructor() {
+        super();
 
-  constructor(){
-    super();
+        this.state = {
+            task: '',
+            items: [
+                {
+                    id: uuidv4(),
+                    task: 'Estudiar Web',
+                    complete: false,
+                },
+
+                {
+                    id: uuidv4(),
+                    task: 'Hacer Tarea',
+                    complete: false,
+                },
+
+                {
+                    id: uuidv4(),
+                    task: 'Ver One Piece',
+                    complete: false,
+                },
+                
+            ],
+        }
         
-    this.state = {
-      task: '',
-      items: [
-        {
-          id: uuidv4(),
-          task: 'Estudiar Web',
-          complete: false,
-        },
-              
-        {
-          id: uuidv4(),
-          task: 'Hacer Tarea',
-          complete: false,
-        },
-
-        {
-          id: uuidv4(),
-          task: 'Ver One Piece',
-          complete: false,
-        },
-      ],
     }
-  }
     
-  handleOnChange = e => {
-    const {target:{value}} = e;
+    handleOnChange = e => {
+        const {target:{value}} = e;
 
-    this.setState({
-      task: value,
-      items: [...this.state.items]
-    })
-  }
-
-  handleOnSubmit = e => {
-    e.preventDefault();
-
-    if(this.state.task.trim() != ''){ //que no sea null
-      this.setState({
-        task: '',//hace referencia al de arriba nomas hace que se haga vacio cuando acabas
-        item: [//estan alterando la lista
-          ...this.state.items,//copia toda la lista de arriba y agrega una mas
-          {
-            id: uuidv4(),
-            task: this.state.task,
-            complete: false
-          }
-        ]
-      })
+        this.setState({
+            task: value
+        })
     }
-  }
 
-  render() {
+    handleOnSubmit = e => {
+        e.preventDefault();
 
-    console.log(this.state.items)
-    //console.table(this.state.task);
- 
-    return (
-    <div className="Todo">
-      <h1>Nueva Tarea</h1>
-      <form onSubmit = {this.handleOnSubmit}>
-        <input
-          type = "text"
-          value = {this.state.task}
-          onChange = {this.handleOnChange}
-        />
-        </form>
+        if (this.state.task.trim() !== '') {
+            this.setState({
+                task: '',
+                items: [
+                    ...this.state.items,
+                    {
+                        id: uuidv4(),
+                        task: this.state.task,
+                        complete: false
+                    }
+                ]
+            })
+        }
+    }
+    
+    markAsCompleted = id => {
+        const {items} = this.state;
 
-        <ul>
-          {
-            this.state.items.map( (item) => (
-              <li>
-                {item.task}
-                <div>
-                  <span>icon check </span>
-                  <span>icono basurero</span>
-                </div>
-              </li>
-            ) )
-          }
-        </ul>
-    </div>
-    );
-  }
+
+        const foundTask = items.find(
+            item => item.id === id
+        );
+
+        foundTask.complete = true;
+
+        this.setState({
+            items: [
+                ...this.state.items,
+            ]
+        })
+    }
+
+    render() {
+
+        console.log(this.state.items);
+        //console.log(this.state.task);
+        return (
+            <div className="Todo">
+                <h1>Nueva Tarea</h1>
+
+                <form onSubmit={this.handleOnSubmit}>
+                    <input
+                        type = "text"
+                        value = {this.state.task}
+                        onChange = {this.handleOnChange}
+                    />
+                </form>
+
+                <List 
+                    items ={this.state.items}
+                    markAsCompleted = {this.markAsCompleted}
+                />
+
+            </div>
+
+
+        );
+    }
 }
+
+export default Todo;
