@@ -1,4 +1,3 @@
-import Home from './Home/Home.js';
 import Header from '../shared/layout/Header.js';
 import Footer from '../shared/layout/Footer.js';
 import Content from '../shared/layout/Content.js';

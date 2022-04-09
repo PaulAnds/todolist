@@ -67,7 +67,7 @@ class Todo extends Component {
             item => item.id === id
         );
 
-        if(foundTask.complete != true) {
+        if(foundTask.complete !== true) {
             foundTask.complete = true;
         }
         else{
