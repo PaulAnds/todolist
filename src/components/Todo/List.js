@@ -21,7 +21,12 @@ const List = props => {
                         >
                             <i className=" fa fa-check"></i>
                         </span>
-                        
+                        <span 
+                            className = {item.complete ? 'done': 'hide'}
+                            onClick = {() => markAsCompleted(item.id)}
+                        >
+                            X
+                        </span>
                         <span className = "trash"
                             onClick = {() => removeTask(item.id)}
                         >

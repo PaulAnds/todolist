@@ -1,0 +1,71 @@
+.Todo {
+    background-color: #e591d5;
+    border-radius: 8px;
+    box-shadow:  5px 5px 5px #e591d5;
+    margin: 50px auto;
+    min-height: 20px;
+    padding: 20px;
+    text-align: left;
+    width: 70%;
+
+}
+
+.Todo ul li {
+    text-align: center;
+    color: #e591d5;
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    padding: 20px 15px;
+    font-family: sans-serif;
+    border-radius: 5px;
+}
+
+.Todo ul li.complete {
+    background-color: #48df75;
+    border: 1px solid black;
+    color: black;
+}
+
+.Todo ul li .action {
+    display: flex;
+    justify-content: space-between;
+    width: 50px;
+}
+
+.Todo ul li span {
+    cursor: pointer;
+}
+.Todo ul li span:first-of-type {
+    color: #20c41d;
+}
+.Todo ul li .done {
+    color: #79c41d;
+    display: block;
+}
+
+.Todo ul li .trash {
+    color: #c41d1d;
+    display: block;
+}
+
+.Todo form input {
+    background-color: black;
+    border-radius: 4px;
+    border: 1px solid black;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    color: black;
+    font-size: 14px;
+    height: 34px;
+    padding: 6px 12px;
+    width: 100%;
+
+}
+
+.Todo form input:active,
+.Todo form input:focus
+{
+    outline: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {v4 as uuidv4} from 'uuid';
 import List from './List';
+import './Todo.css';
 
 class Todo extends Component {
     constructor() {
@@ -66,7 +67,13 @@ class Todo extends Component {
             item => item.id === id
         );
 
-        foundTask.complete = true;
+        if(foundTask.complete != true) {
+            foundTask.complete = true;
+        }
+        else{
+            foundTask.complete = false;
+        }
+        
 
         this.setState({
             items: [
